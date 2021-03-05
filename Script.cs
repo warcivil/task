@@ -16,13 +16,12 @@ namespace ConsoleApp6
 
         public string ToString() // 
         {
-            int counter = 1;
             string t = "";
             foreach (var item in _jsonWellParametrs)
             {
                 if(!_unicalId.Contains((String)item["WellId"]))
                 {
-                    t += (counter++).ToString() + " : " + item["ParameterName"] + "\n";
+                    t +=item["ParameterName"] + "\n";
                     _unicalId.Add((String)item["WellId"]);
                 }
 
