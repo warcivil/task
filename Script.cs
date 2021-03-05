@@ -153,6 +153,11 @@ namespace ConsoleApp6
     }
     class Program
         {
+        // можно было просто создать 3 dynamic переменных и сократить время дессериализации
+        // сейчас задача решается дессериализацией 5 файлов(2 раза wellParametrs, 2раза wells, 1 раз departments)
+        // не хорошо, что мы два раза дессериализуем один и тот же файл, но в условиях данной задачи это несущественно
+        // из плюсов - лучшая читаемость кода, нет колхоза со строками 
+
         static dynamic goJson(String PATH) => 
                JsonConvert.DeserializeObject((new StreamReader(PATH)).ReadToEnd()); // конвертируем в json
 
