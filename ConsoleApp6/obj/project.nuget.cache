@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "nEGdyjpdudQLdUXH3O9buGMHSo4CT5M7+g1vbPrGDLfuZEVUFRfa9UZAExzQMrLxtmujBPW1C6M4S8mWO74KDg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\pixte\\OneDrive\\Рабочий стол\\gut\\tasl1\\task\\ConsoleApp6\\ConsoleApp6.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pixte\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
