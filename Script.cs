@@ -7,14 +7,25 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 namespace ConsoleApp6
 {
-    class Task1
+    abstract class Print
+    {
+        protected void print(string task, string text)
+        {
+            Console.WriteLine("------------" + task + "---------------");
+            Console.WriteLine(text);
+            Console.WriteLine("------------" + task + "---------------");
+
+        }
+    }
+
+    class Task1:Print
     {
         private dynamic _jsonWellParametrs; // wellParameters.json
         private List<String> _unicalId = new List<String>();
         public Task1(dynamic jsonWellParametrs) =>
             _jsonWellParametrs = jsonWellParametrs;
 
-        public string ToString() // 
+        public void ToString() // 
         {
             int counter = 1;
             string t = "";
@@ -27,10 +38,10 @@ namespace ConsoleApp6
                 }
 
             }
-            return t;
+            print("task1", t);
         }
     }
-    class Task2
+    class Task2:Print
     {
         private dynamic _jsonFile1; // wellParameters.json
         private dynamic _jsonFile2; // wells.json
@@ -94,8 +105,9 @@ namespace ConsoleApp6
             return sr / (-1 + value.Count);
         }
 
-        public String ToString()
+        public void ToString()
         {
+            Find();
             String info = "";
             foreach (var item in _valueList)
             {
@@ -107,11 +119,11 @@ namespace ConsoleApp6
                     " med " + Math.Round(item.Value[item.Value.Count / 2 + 1], 2) +
                     " avg " + Math.Round(Sr(item.Value), 2) + "\n";
             }
-            return info;
+            print("task2", info);
         }
     }
 
-    class Task3
+    class Task3:Print
     {
         private dynamic _jsonFile1; // departments.json
         private dynamic _jsonFile2; // wells.json
@@ -121,7 +133,7 @@ namespace ConsoleApp6
             _jsonFile2 = jsonDate2;
         }
 
-        public String ToString()
+        public void ToString()
         {
             string text = "";
             foreach (var item in _jsonFile1)
@@ -147,7 +159,7 @@ namespace ConsoleApp6
 
             }
 
-            return text;
+            print("task3", text);
         }
 
 
@@ -167,16 +179,11 @@ namespace ConsoleApp6
             Task1 task1 = new Task1(goJson("wellParameters.json"));
             Task2 task2 = new Task2(goJson("wellParameters.json"), goJson("wells.json"));
             Task3 task3 = new Task3(goJson("departments.json"), goJson("wells.json"));
-            task2.Find();
-            Console.WriteLine("-------task1-------");
-            Console.WriteLine(task1.ToString());
-            Console.WriteLine("-------task1-------");
-            Console.WriteLine("-------task2-------");
-            Console.WriteLine(task2.ToString());
-            Console.WriteLine("-------task2-------");
-            Console.WriteLine("-------task3-------");
-            Console.WriteLine(task3.ToString());
-            Console.WriteLine("-------task3-------");
+
+            task1.ToString();
+            task2.ToString();
+            task3.ToString();
+
             Console.ReadKey();
         }
 
